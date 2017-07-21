@@ -7,7 +7,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-func scan(prefix []string, context []string, source yaml.MapSlice) yaml.MapSlice {
+func scan(prefix, context []string, source yaml.MapSlice) yaml.MapSlice {
 	for index, item := range source {
 		switch key := item.Key.(type) {
 		case string:
@@ -39,7 +39,7 @@ func scan(prefix []string, context []string, source yaml.MapSlice) yaml.MapSlice
 	return source
 }
 
-func listHandler(prefix []string, context []string, source []interface{}) []interface{} {
+func listHandler(prefix, context []string, source []interface{}) []interface{} {
 	for index, item := range source {
 		switch nowItem := item.(type) {
 		case yaml.MapSlice:
