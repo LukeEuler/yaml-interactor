@@ -29,4 +29,3 @@ func initConfig() {
 		log.Fatal(err)
 	}
 }
-

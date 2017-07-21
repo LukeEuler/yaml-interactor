@@ -31,4 +31,3 @@ func sourceCheck(source string) []byte {
 	}
 	return sourceFile
 }
-
