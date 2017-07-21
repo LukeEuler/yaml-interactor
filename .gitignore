@@ -1,0 +1,9 @@
+# ide
+.idea
+
+# External packages folder
+vendor/
+
+# Compiled executables
+yaml-interactor
+yaml-interactor.exe

@@ -1,0 +1,21 @@
+# a sample
+database:
+  - name: infludb
+    url:
+  - name: opentsdb
+    url:
+
+log:
+  level: debug
+  maxSize: 328
+  path:
+
+server:
+  port: 9527
+  tomcat:
+      access-log-enabled: true
+      access-log-pattern: common
+      accesslog.directory:
+  session:
+      cookie:
+        name: john_snow
