@@ -5,9 +5,11 @@ import (
 	"log"
 	"os"
 	"strings"
+	"strconv"
+	"gopkg.in/yaml.v2"
 )
 
-func interact(name string, context []string) string {
+func interact(name, key string, context []string) yaml.MapItem {
 	if len(context) > 0 {
 		tip := strings.Join(context, ", ")
 		println(green(tip))
@@ -21,9 +23,12 @@ func interact(name string, context []string) string {
 
 	if len(sentence) <= 1 {
 		println(red("Write something please."))
-		return interact(name, context)
+		return interact(name, key, context)
 	}
 	result := string(sentence[:len(sentence)-1])
-	//result = strings.TrimSuffix(result, "\n")
-	return result
+	if num, err := strconv.Atoi(result); err == nil {
+		return yaml.MapItem{Key: key, Value: num}
+	} else {
+		return yaml.MapItem{Key: key, Value: result}
+	}
 }

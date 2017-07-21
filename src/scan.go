@@ -1,7 +1,6 @@
 package src
 
 import (
-	"strconv"
 	"strings"
 
 	"gopkg.in/yaml.v2"
@@ -14,12 +13,7 @@ func scan(prefix, context []string, source yaml.MapSlice) yaml.MapSlice {
 			nowPrefix := append(prefix, key)
 			value := item.Value
 			if value == nil {
-				resultStr := interact(strings.Join(nowPrefix, "."), context)
-				if num, err := strconv.Atoi(resultStr); err == nil {
-					source[index] = yaml.MapItem{Key: key, Value: num}
-				} else {
-					source[index] = yaml.MapItem{Key: key, Value: resultStr}
-				}
+				source[index] = interact(strings.Join(nowPrefix, "."), key, context)
 				continue
 			}
 
