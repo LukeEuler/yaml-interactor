@@ -9,10 +9,10 @@ import (
 
 func initConfig() {
 	target := rootCmd.PersistentFlags().Lookup("target").Value.String()
-	targetCheck(target)
+	writableCheck(target)
 
 	source := rootCmd.PersistentFlags().Lookup("source").Value.String()
-	sourceFile := sourceCheck(source)
+	sourceFile := readFile(source)
 
 	data := yaml.MapSlice{}
 	err := yaml.Unmarshal(sourceFile, &data)

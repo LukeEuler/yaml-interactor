@@ -8,7 +8,7 @@ import (
 	"syscall"
 )
 
-func targetCheck(target string) {
+func writableCheck(target string) {
 	_, err := os.Stat(target)
 	if err != nil {
 		_, err = os.Create(target)
@@ -24,7 +24,7 @@ func targetCheck(target string) {
 	}
 }
 
-func sourceCheck(source string) []byte {
+func readFile(source string) []byte {
 	sourceFile, err := ioutil.ReadFile(source)
 	if err != nil {
 		log.Fatal(err)
