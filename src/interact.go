@@ -4,8 +4,9 @@ import (
 	"bufio"
 	"log"
 	"os"
-	"strings"
 	"strconv"
+	"strings"
+
 	"gopkg.in/yaml.v2"
 )
 

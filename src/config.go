@@ -1,31 +1,38 @@
 package src
 
 import (
-	"io/ioutil"
 	"log"
 
 	"gopkg.in/yaml.v2"
 )
 
 func initConfig() {
-	target := rootCmd.PersistentFlags().Lookup("target").Value.String()
-	writableCheck(target)
+	targetFile := rootCmd.PersistentFlags().Lookup("target").Value.String()
+	writableCheck(targetFile)
 
-	source := rootCmd.PersistentFlags().Lookup("source").Value.String()
-	sourceFile := readFile(source)
+	sourceFile := rootCmd.PersistentFlags().Lookup("source").Value.String()
+	sourceContent := readFile(sourceFile)
 
+	data := unmarshal(sourceContent)
+	data = scan(make([]string, 0), make([]string, 0), data)
+	out := marshal(data)
+
+	writeFile(targetFile, out)
+}
+
+func unmarshal(content []byte) yaml.MapSlice {
 	data := yaml.MapSlice{}
-	err := yaml.Unmarshal(sourceFile, &data)
+	err := yaml.Unmarshal(content, &data)
 	if err != nil {
 		log.Fatal(err)
 	}
-	data = scan(make([]string, 0), make([]string, 0), data)
+	return data
+}
+
+func marshal(data yaml.MapSlice) []byte {
 	out, err := yaml.Marshal(data)
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = ioutil.WriteFile(target, out, 0644)
-	if err != nil {
-		log.Fatal(err)
-	}
+	return out
 }

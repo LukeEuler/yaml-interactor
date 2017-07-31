@@ -31,3 +31,10 @@ func readFile(source string) []byte {
 	}
 	return sourceFile
 }
+
+func writeFile(file string, content []byte) {
+	err := ioutil.WriteFile(file, content, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
