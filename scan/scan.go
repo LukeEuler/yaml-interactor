@@ -1,4 +1,4 @@
-package src
+package scan
 
 import (
 	"strings"
@@ -6,7 +6,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-func scan(prefix, context []string, source yaml.MapSlice) yaml.MapSlice {
+func yamlScan(prefix, context []string, source yaml.MapSlice) yaml.MapSlice {
 	for index, item := range source {
 		switch key := item.Key.(type) {
 		case string:
@@ -18,7 +18,7 @@ func scan(prefix, context []string, source yaml.MapSlice) yaml.MapSlice {
 			}
 
 			if _, ok := item.Value.(yaml.MapSlice); ok {
-				value := scan(nowPrefix, context, item.Value.(yaml.MapSlice))
+				value := yamlScan(nowPrefix, context, item.Value.(yaml.MapSlice))
 				source[index] = yaml.MapItem{Key: key, Value: value}
 				continue
 			}
@@ -38,7 +38,7 @@ func listHandler(prefix, context []string, source []interface{}) []interface{} {
 		switch nowItem := item.(type) {
 		case yaml.MapSlice:
 			nowContext := append(context, getContext(nowItem)...)
-			source[index] = scan(prefix, nowContext, nowItem)
+			source[index] = yamlScan(prefix, nowContext, nowItem)
 		case []interface{}:
 			source[index] = listHandler(prefix, context, nowItem)
 		}

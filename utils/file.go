@@ -1,4 +1,4 @@
-package src
+package utils
 
 import (
 	"fmt"
@@ -8,7 +8,8 @@ import (
 	"syscall"
 )
 
-func writableCheck(target string) {
+// Writable XXX
+func Writable(target string) {
 	_, err := os.Stat(target)
 	if err != nil {
 		_, err = os.Create(target)
@@ -24,7 +25,8 @@ func writableCheck(target string) {
 	}
 }
 
-func readFile(source string) []byte {
+// ReadFile XXX
+func ReadFile(source string) []byte {
 	sourceFile, err := ioutil.ReadFile(source)
 	if err != nil {
 		log.Fatal(err)
@@ -32,7 +34,8 @@ func readFile(source string) []byte {
 	return sourceFile
 }
 
-func writeFile(file string, content []byte) {
+// WriteFile XXX
+func WriteFile(file string, content []byte) {
 	err := ioutil.WriteFile(file, content, 0644)
 	if err != nil {
 		log.Fatal(err)
