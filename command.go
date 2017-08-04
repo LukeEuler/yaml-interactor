@@ -1,4 +1,4 @@
-package src
+package main
 
 import "github.com/spf13/cobra"
 
@@ -15,8 +15,4 @@ func init() {
 	cobra.OnInitialize(initConfig)
 	rootCmd.PersistentFlags().StringP("source", "s", "", "configure file to load")
 	rootCmd.PersistentFlags().StringP("target", "t", "", "configure file to write")
-}
-
-func Execute() error {
-	return rootCmd.Execute()
 }
