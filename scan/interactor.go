@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"yaml-interactor/utils"
 
+	"github.com/LukeEuler/yaml-interactor/utils"
 	"gopkg.in/yaml.v2"
 )
 

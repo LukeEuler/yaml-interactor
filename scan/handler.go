@@ -1,6 +1,6 @@
 package scan
 
-import "yaml-interactor/utils"
+import "github.com/LukeEuler/yaml-interactor/utils"
 
 // Handle XXX
 func Handle(file string) []byte {

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"yaml-interactor/scan"
-	"yaml-interactor/utils"
+	"github.com/LukeEuler/yaml-interactor/scan"
+	"github.com/LukeEuler/yaml-interactor/utils"
 )
 
 func initConfig() {
