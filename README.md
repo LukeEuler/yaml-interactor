@@ -2,25 +2,8 @@
 
 ## dependence manage
 
-- golang 1.8+
-- glide 0.12.3+
-
-## format
-
-```bash
-# see which code needs format
-find . -path ./vendor -prune -o -name '*.go' -print | xargs gofmt -d | grep '^'
-# format
-glide nv | xargs go fmt
-```
-
-## before run
-```bash
-# install dependence
-glide install
-# update dependence
-glide up
-```
+- golang 1.12.6+
+- goimports
 
 ## usage
 ```

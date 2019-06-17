@@ -1,6 +1,11 @@
 package main
 
-import "github.com/spf13/cobra"
+import (
+	"github.com/spf13/cobra"
+
+	"github.com/LukeEuler/yaml-interactor/scan"
+	"github.com/LukeEuler/yaml-interactor/utils"
+)
 
 var rootCmd = &cobra.Command{
 	Use:   "yaml-file-generator",
@@ -15,4 +20,18 @@ func init() {
 	cobra.OnInitialize(initConfig)
 	rootCmd.PersistentFlags().StringP("source", "s", "", "configure file to load")
 	rootCmd.PersistentFlags().StringP("target", "t", "", "configure file to write")
+}
+
+func initConfig() {
+	targetFile := rootCmd.PersistentFlags().Lookup("target").Value.String()
+	utils.Writable(targetFile)
+
+	sourceFile := rootCmd.PersistentFlags().Lookup("source").Value.String()
+	out := scan.Handle(sourceFile)
+
+	utils.WriteFile(targetFile, out)
+}
+
+func main() {
+	rootCmd.Execute()
 }

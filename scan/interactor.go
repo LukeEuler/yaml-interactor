@@ -7,8 +7,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/LukeEuler/yaml-interactor/utils"
 	"gopkg.in/yaml.v2"
+
+	"github.com/LukeEuler/yaml-interactor/utils"
 )
 
 func interact(name, key string, context []string) yaml.MapItem {

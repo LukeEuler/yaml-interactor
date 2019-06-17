@@ -1,0 +1,7 @@
+github.com/inconshreveable/mousetrap v1.0.0/go.mod h1:PxqpIevigyE2G7u3NXJIT2ANytuPF1OarO4DADm73n8=
+github.com/spf13/cobra v0.0.0-20170731170427-b26b538f6930 h1:uJND9FKkf5s8kdTQX1jDygtp/zV4BJQpYvOmXPCYWgc=
+github.com/spf13/cobra v0.0.0-20170731170427-b26b538f6930/go.mod h1:1l0Ry5zgKvJasoi3XT1TypsSe7PqH0Sj9dhYf7v3XqQ=
+github.com/spf13/pflag v1.0.0 h1:oaPbdDe/x0UncahuwiPxW1GYJyilRAdsPnq3e1yaPcI=
+github.com/spf13/pflag v1.0.0/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
+gopkg.in/yaml.v2 v2.0.0-20170721122051-25c4ec802a7d h1:2DX7x6HUDGZUyuEDAhUsQQNqkb1zvDyKTjVoTdzaEzo=
+gopkg.in/yaml.v2 v2.0.0-20170721122051-25c4ec802a7d/go.mod h1:JAlM8MvJe8wmxCU4Bli9HhUf9+ttbYbLASfIpnQbh74=
