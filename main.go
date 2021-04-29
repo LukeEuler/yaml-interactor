@@ -1,37 +1,20 @@
 package main
 
 import (
-	"github.com/spf13/cobra"
+	"flag"
 
 	"github.com/LukeEuler/yaml-interactor/scan"
 	"github.com/LukeEuler/yaml-interactor/utils"
 )
 
-var rootCmd = &cobra.Command{
-	Use:   "yaml-file-generator",
-	Short: "interact with yaml file",
-	Long:  `complete a yaml file in command line`,
-	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
-	},
-}
-
-func init() {
-	cobra.OnInitialize(initConfig)
-	rootCmd.PersistentFlags().StringP("source", "s", "", "configure file to load")
-	rootCmd.PersistentFlags().StringP("target", "t", "", "configure file to write")
-}
-
-func initConfig() {
-	targetFile := rootCmd.PersistentFlags().Lookup("target").Value.String()
-	utils.Writable(targetFile)
-
-	sourceFile := rootCmd.PersistentFlags().Lookup("source").Value.String()
-	out := scan.Handle(sourceFile)
-
-	utils.WriteFile(targetFile, out)
-}
-
 func main() {
-	rootCmd.Execute()
+	sourceFile := flag.String("s", "source.yaml", "configure file to load")
+	targetFile := flag.String("t", "target.yaml", "configure file to write")
+	flag.Parse()
+
+	utils.Writable(*targetFile)
+
+	out := scan.Handle(*sourceFile)
+
+	utils.WriteFile(*targetFile, out)
 }
